@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="دليل شامل لأعراض نقص الفيتامينات والمعادن والمصادر الغذائية - يعمل بدون إنترنت">
+    <meta name="theme-color" content="#667eea">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="دليل الفيتامينات">
+    <title>دليل الفيتامينات والمعادن - أعراض النقص</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- App Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="./images/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="./images/icon-512x512.png">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Install Prompt -->
+    <div class="install-prompt" id="installPrompt" style="display: none;">
+        <div class="install-prompt-content">
+            <i class="fas fa-download"></i>
+            <div class="install-text">
+                <h4>ثبّت التطبيق</h4>
+                <p>للوصول السريع والعمل بدون إنترنت</p>
+            </div>
+            <button class="install-btn" id="installBtn">تثبيت</button>
+            <button class="close-prompt" id="closePrompt"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-heartbeat"></i>
+                    <h1>دليل الفيتامينات والمعادن</h1>
+                </div>
+                <div class="header-actions">
+                    <button class="icon-btn" id="darkModeToggle" title="الوضع الليلي">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="icon-btn" id="favoritesBtn" title="المفضلة">
+                        <i class="fas fa-heart"></i>
+                        <span class="badge" id="favoritesBadge">0</span>
+                    </button>
+                </div>
+            </div>
+            <p class="tagline">اكتشف أعراض النقص والمصادر الغذائية</p>
+        </div>
+    </header>
+
+    <!-- Quick Access Menu -->
+    <section class="quick-access">
+        <div class="container">
+            <div class="quick-menu">
+                <a href="calculator.html" class="quick-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>حاسبة الفيتامينات</h3>
+                    <p>اكتشف نقص الفيتامينات</p>
+                </a>
+                <a href="tracker.html" class="quick-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>المتتبع اليومي</h3>
+                    <p>سجل فيتاميناتك</p>
+                </a>
+                <a href="meal-planner.html" class="quick-card">
+                    <i class="fas fa-utensils"></i>
+                    <h3>مخطط الوجبات</h3>
+                    <p>وجبات صحية</p>
+                </a>
+                <a href="foods.html" class="quick-card">
+                    <i class="fas fa-apple-alt"></i>
+                    <h3>قاعدة الأطعمة</h3>
+                    <p>ابحث عن أي طعام</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="ابحث عن فيتامين أو معدن...">
+            </div>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> الكل
+                </button>
+                <button class="filter-btn" data-filter="vitamins">
+                    <i class="fas fa-capsules"></i> الفيتامينات
+                </button>
+                <button class="filter-btn" data-filter="minerals">
+                    <i class="fas fa-atom"></i> المعادن
+                </button>
+                <button class="filter-btn" data-filter="favorites">
+                    <i class="fas fa-star"></i> المفضلة
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="vitamins-grid" id="vitaminsGrid">
+                <!-- Cards will be inserted here by JavaScript -->
+            </div>
+            
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <p>لم يتم العثور على نتائج</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div class="modal" id="detailModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div id="modalBody">
+                <!-- Content will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-info-circle"></i> معلومة هامة</h3>
+                    <p>هذا الموقع للأغراض التعليمية فقط. استشر طبيبك قبل تناول أي مكملات غذائية.</p>
+                </div>
+                <div class="footer-section">
+                    <h3><i class="fas fa-heart"></i> صحتك تهمنا</h3>
+                    <p>التغذية المتوازنة هي أساس الصحة الجيدة</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 دليل الفيتامينات والمعادن. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/pwa.js"></script>
+</body>
+</html>
